@@ -86,3 +86,10 @@ jobs:
 
     - name: Dotnet Build
       run: dotnet build --configuration Release ./src/project
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        # Artifact name
+        name: GitHubActionsHelloWorldConsoleDownloadableArtifact${{ needs.calculate-version.outputs.semVer }} #.zip will be added automatically
+        path: ./bin/release/net6.0/*.*
