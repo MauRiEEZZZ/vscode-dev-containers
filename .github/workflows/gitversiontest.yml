@@ -1,4 +1,4 @@
-name: Deploy Development Vidara.Portal to Azure App Service
+name: Git Version
 
 on:
   workflow_dispatch:
@@ -24,8 +24,10 @@ jobs:
     steps:
 
     # checkout the repo
-    - name: 'Checkout Github Action'
+    - name: Fetch all history for all tags and branches
       uses: actions/checkout@v2
+      run: |
+        git fetch --prune --unshallow
 
   calculate-version:
     name: Calculate Version
@@ -35,10 +37,21 @@ jobs:
     steps:
       # gitversion/execute step omitted for brevity
 
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: gittools/actions/gitversion/setup@v0
+        name: Install GitVersion  
+
       - name: Determine Version
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.7
 
+      - run: |
+          echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
+          
   display-semver:
     name: Display Semantic Version
     runs-on: ubuntu-latest
