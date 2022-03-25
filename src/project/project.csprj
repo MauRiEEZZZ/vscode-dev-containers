@@ -5,6 +5,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version Condition=" '$(SEMVER)' == '' ">0.0.0-dev</Version>
+    <Version Condition=" '$(SEMVER)' != '' ">$(SEMVER)</Version>
   </PropertyGroup>
 
 </Project>
