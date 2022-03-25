@@ -92,4 +92,4 @@ jobs:
       with:
         # Artifact name
         name: GitHubActionsHelloWorldConsoleDownloadableArtifact${{ needs.calculate-version.outputs.semVer }} #.zip will be added automatically
-        path: ./bin/release/net6.0/*.*
+        path: ./src/project/bin/release/net6.0/*.*
