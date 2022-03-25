@@ -48,14 +48,6 @@ jobs:
       - uses: gittools/actions/gitversion/execute@v0
         name: Determine Version
         id: gitversion
-      - run: |
-          echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
-
-      - uses: gittools/actions/gitversion/execute@v0
-        name: Use GitVersion
-        id: gitversion # step id used as reference for output values
-      - run: |
-          echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
           
   display-semver:
     name: Display Semantic Version
