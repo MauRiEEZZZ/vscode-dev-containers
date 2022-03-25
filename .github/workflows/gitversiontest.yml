@@ -23,11 +23,11 @@ jobs:
 
     steps:
 
-    # checkout the repo
-    - name: Fetch all history for all tags and branches
-      uses: actions/checkout@v2
-      run: |
-        git fetch --prune --unshallow
+      # checkout the repo
+      - name: Fetch all history for all tags and branches
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
   calculate-version:
     name: Calculate Version
