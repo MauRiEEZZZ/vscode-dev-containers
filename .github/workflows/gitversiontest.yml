@@ -60,7 +60,7 @@ jobs:
     steps:
       - name: Display version
         run: |
-          echo SemVer: $SEMVER
+          echo SemVer: $env:SEMVER
 
   build:
     permissions:
